@@ -28,6 +28,7 @@ bash 'Install chef' do
     code <<-EOH
 cd /etc/chef/
 
+#do not install chef-client again
 #curl -L https://omnitruck.chef.io/install.sh | bash || error_exit 'could not install chef'
 
 # Create first-boot.json

@@ -30,12 +30,14 @@ verifier:
   format: documentation
 
 platforms:
-  - name: centos-7
+  - name: rhel75
     transport:
-      username: centos
-      ssh_key:  ~\.ssh\id_rsa
+      username: ec2-user
+      ssh_key: ~/.ssh/id_rsa
+    driver:
+      image_id: ami-28e07e50
     driver_config:
-      user_data: C:/Users/chef/user_data
+      user_data: ./kitchen_user_data
 
 suites:
   - name: default

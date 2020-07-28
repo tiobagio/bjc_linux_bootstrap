@@ -17,8 +17,8 @@ end
 bash 'Setup hosts file correctly' do
     code <<-EOH
 cat > "/etc/hosts" << EOF
-172.31.54.10 chef.automate-demo.com
-172.31.54.11 automate.automate-demo.com
+172.31.54.57 chef.automate-demo.com
+172.31.54.22 automate.automate-demo.com
 EOF
 
 EOH
@@ -48,10 +48,10 @@ bash 'Create client.rb' do
 
 NODE_NAME=rhel-YOURNAME-$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 4 | head -n 1)
 
-/bin/echo 'log_location     STDOUT' >> /etc/chef/client.rb
+/bin/echo 'log_location     STDOUT' > /etc/chef/client.rb
 /bin/echo -e "chef_server_url 'https://chef.automate-demo.com/organizations/automate'" >> /etc/chef/client.rb
-/bin/echo -e "validation_client_name 'automate-validator'" >> /etc/chef/client.rb
-/bin/echo -e "validation_key '/tmp/kitchen/cookbooks/bjc_linux_bootstrap/recipes/validator.pem'" >> /etc/chef/client.rb
+/bin/echo -e "validation_client_name 'automate-org-validator'" >> /etc/chef/client.rb
+/bin/echo -e "validation_key '/tmp/kitchen/cookbooks/bjc_linux_bootstrap/recipes/automate_org_validator.pem'" >> /etc/chef/client.rb
 /bin/echo -e "node_name '${NODE_NAME}'" >> /etc/chef/client.rb
 /bin/echo -e "ssl_verify_mode :verify_none" >> /etc/chef/client.rb
 EOH

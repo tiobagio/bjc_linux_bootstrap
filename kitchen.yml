@@ -10,7 +10,7 @@ driver:
   instance_type: t3.micro
   tags:
     # Replace YOURNAME here
-    Name: "YOURNAME-node"
+    Name: "TBAGIO-node"
     user: Administrator
     X-Contact: "tbagio@chef.io"
     X-Application: "training"

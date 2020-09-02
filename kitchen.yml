@@ -37,6 +37,11 @@ platforms:
       ssh_key: <%= ENV['AWS_KEYPAIR_FILE'] %>
     driver_config:
       user_data: ./kitchen_user_data
+  - name: amazon2-2018
+    transport:
+      ssh_key: <%= ENV['AWS_KEYPAIR_FILE'] %>
+    driver_config:
+      user_data: ./kitchen_user_data
 
 suites:
   - name: default

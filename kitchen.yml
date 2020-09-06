@@ -42,11 +42,29 @@ platforms:
       ssh_key: <%= ENV['AWS_KEYPAIR_FILE'] %>
     driver_config:
       user_data: ./kitchen_user_data
-
+  - name: ubuntu-16.04
+    transport:
+      ssh_key: <%= ENV['AWS_KEYPAIR_FILE'] %>
+    driver_config:
+      user_data: ./kitchen_user_data
+  - name: rhel-7
+    transport:
+      ssh_key: <%= ENV['AWS_KEYPAIR_FILE'] %>
+    driver_config:
+      user_data: ./kitchen_user_data
+      
 suites:
   - name: default
     run_list:
       - recipe[bjc_linux_bootstrap::default]
+    #  - recipe[bjc_linux_bootstrap::run_client]
+    verifier:
+      inspec_tests:
+        - test/smoke/default
+    attributes:
+  - name: policy
+    run_list:
+      - recipe[bjc_linux_bootstrap::policy]
     #  - recipe[bjc_linux_bootstrap::run_client]
     verifier:
       inspec_tests:

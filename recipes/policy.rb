@@ -34,9 +34,8 @@ cd /etc/chef/
 # Create first-boot.json
 cat > "/etc/chef/first-boot.json" << EOF
 {
-   "run_list" :[
-   "role[base]"
-   ]
+    "policy_group": "dev-rhel",
+    "policy_name": "base_rhel"
 }
 EOF
 
